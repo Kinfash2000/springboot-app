@@ -22,29 +22,15 @@ spec:
         - containerPort: 8085
           name: http
           protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8085
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8085
-          initialDelaySeconds: 10
-          periodSeconds: 30
+# service type loadbalancer       
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     app: springboot-app
+    k8s-app: springboot-app
   name: springboot-service
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP"
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health"
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "8085"
 spec:
   ports:
   - name: http
