@@ -19,7 +19,7 @@ spec:
         image: 211223789150.dkr.ecr.us-east-1.amazonaws.com/coachak/my-docker-repo:${BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 8080
           name: http
           protocol: TCP
 # service type loadbalancer       
